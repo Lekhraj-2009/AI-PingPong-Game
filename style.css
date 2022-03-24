@@ -1,0 +1,45 @@
+.body-background{
+    background-image: url("background1.jpg");
+    text-align: center;
+}
+.header{
+    width: 100%;
+    margin-top: 0px;
+    box-shadow: 1px 1px 10px white;
+    font-size: 30px;
+    font-family: 'Black Ops One', cursive;
+    text-align: left;
+}
+#btn-instructions{
+    float: right;
+    margin-top: 2px;
+    border: 1px solid white;
+    font-family: 'PT Serif', serif;
+    font-weight: 500;
+    font-size: 17px;
+    border-radius: 7.5px;
+}
+#startGame{
+    font-family: 'Acme', sans-serif;
+    font-size: 21px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 150px;
+}
+#status_btn{
+    font-size: 18px;
+    width: 300px;
+    margin-top: 30px;
+}
+#computerPoints_btn{
+    margin-right: 3.5px;
+    margin-top: 10px;
+    width: 145px;
+    font-size: 17px;
+}
+#playerPoints_btn{
+    margin-left: 3.5px;
+    margin-top: 10px;
+    width: 145px;
+    font-size: 17px;
+}

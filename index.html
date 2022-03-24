@@ -1,0 +1,51 @@
+<!--created by prashant shukla-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AI Ping Pong</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        
+        <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>   
+        
+        <!--Imported Fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <!--Imported Fonts-->
+        
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="body-background">
+        <center>
+            <h3 class="btn btn-warning header">
+                AI Ping-Pong Game
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="btn-instructions">HOW TO PLAY?</button>
+            </h3>
+            <br><br><br>
+            <button class="btn btn-success" id="startGame" onclick="startGame()">START GAME</button>
+            <br>
+            <button class="btn btn-danger" id="status_btn">
+                <b>STATUS</b>: <span id="status"></span>
+            </button>
+            <br>
+            <button class="btn btn-warning" id="computerPoints_btn">
+                <b>COMPUTER</b>: <span id="computer_points"></span>
+            </button>
+            <button class="btn btn-warning" id="playerPoints_btn">
+                <b>PLAYER</b>: <span id="player_points"></span>
+            </button>
+            <br><br><br>
+            <div id="canvas"></div>
+        </center>
+
+        <!--JS File Link-->
+        <script src="main.js"></script>
+    </body>
+</html>
