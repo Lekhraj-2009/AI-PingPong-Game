@@ -23,8 +23,18 @@ var ball = {
 
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.parent('canvas');
 }
 
+function start(){
+  document.getElementById("startGame").disabled = true;
+  document.getElementById("restartGame").disabled = false;
+}
+
+function reStart(){
+  document.getElementById("startGame").disabled = true;
+  document.getElementById("restartGame").disabled = false;
+}
 
 function draw(){
 
