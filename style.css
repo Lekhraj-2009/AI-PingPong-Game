@@ -75,3 +75,11 @@ a{
 .instructions_p{
     font-size: 17px;
 }
+#canvas{
+    margin-bottom: 100px;
+}
+canvas{
+    border: 5px solid white;
+    border-radius: 20px;
+
+}

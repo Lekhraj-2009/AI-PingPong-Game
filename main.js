@@ -22,9 +22,60 @@ var ball = {
 }
 
 function setup(){
-  var canvas =  createCanvas(700,600);
+  canvas =  createCanvas(700,600);
   canvas.parent('canvas');
+
+  video = createCapture(VIDEO);
+  video.size(700, 600);
+  video.hide();
+
+  poseNet = ml5.poseNet(video, modelLoaded);
 }
+
+function modelLoaded(){
+  console.log("PoseNet Loaded Successfully!");
+}
+
+function draw(){
+  background(0); 
+  image(video, 0, 0, 700, 600);
+ 
+  fill("black");
+  stroke("black");
+  rect(680,0,20,700);
+ 
+  fill("black");
+  stroke("black");
+  rect(0,0,20,700);
+  
+    //funtion paddleInCanvas call 
+    paddleInCanvas();
+  
+    //left paddle
+    fill(250,0,0);
+     stroke(0,0,250);
+     strokeWeight(0.5);
+    paddle1Y = mouseY; 
+    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
+    
+    
+     //pc computer paddle
+     fill("#FFA500");
+     stroke("#FFA500");
+    var paddle2y =ball.y-paddle2Height/2;  rect(paddle2Y,paddle2y,paddle2,paddle2Height,100);
+     
+     //function midline call
+     midline();
+     
+     //funtion drawScore call 
+    drawScore();
+    
+    //function models call  
+    models();
+    
+    //function move call which in very important
+     move();
+ }
 
 function start(){
   document.getElementById("startGame").disabled = true;
@@ -36,49 +87,6 @@ function reStart(){
   document.getElementById("restartGame").disabled = false;
 }
 
-function draw(){
-
- background(0); 
-
- fill("black");
- stroke("black");
- rect(680,0,20,700);
-
- fill("black");
- stroke("black");
- rect(0,0,20,700);
- 
-   //funtion paddleInCanvas call 
-   paddleInCanvas();
- 
-   //left paddle
-   fill(250,0,0);
-    stroke(0,0,250);
-    strokeWeight(0.5);
-   paddle1Y = mouseY; 
-   rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
-   
-   
-    //pc computer paddle
-    fill("#FFA500");
-    stroke("#FFA500");
-   var paddle2y =ball.y-paddle2Height/2;  rect(paddle2Y,paddle2y,paddle2,paddle2Height,100);
-    
-    //function midline call
-    midline();
-    
-    //funtion drawScore call 
-   drawScore();
-   
-   //function models call  
-   models();
-   
-   //function move call which in very important
-    move();
-}
-
-
-
 //function reset when ball does notcame in the contact of padde
 function reset(){
    ball.x = width/2+100,
@@ -87,7 +95,6 @@ function reset(){
    ball.dy =3;
    
 }
-
 
 //function midline draw a line in center
 function midline(){
@@ -98,7 +105,6 @@ function midline(){
     rect(width/2,y+i,10,480);
     }
 }
-
 
 //function drawScore show scores
 function drawScore(){
@@ -114,7 +120,6 @@ function drawScore(){
     document.getElementById("computer_points").innerHTML = pcscore;
     document.getElementById("player_points").innerHTML = playerscore;
 }
-
 
 //very important function of this game
 function move(){
@@ -156,7 +161,6 @@ if(pcscore ==4){
    }   
 }
 
-
 //width height of canvas speed of ball 
 function models(){
     textSize(18);
@@ -166,7 +170,6 @@ function models(){
     text("Speed:"+abs(ball.dx),50,15);
     text("Height:"+height,235,15)
 }
-
 
 //this function help to not go te paddle out of canvas
 function paddleInCanvas(){
