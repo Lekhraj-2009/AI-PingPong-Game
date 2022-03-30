@@ -1,3 +1,6 @@
+rightWristX = 0;
+rightWristY = 0;
+score_rightWrist = 0;
 
 /*created by prashant shukla */
 
@@ -30,10 +33,21 @@ function setup(){
   video.hide();
 
   poseNet = ml5.poseNet(video, modelLoaded);
+  poseNet.on('pose', gotPoses);
 }
 
 function modelLoaded(){
   console.log("PoseNet Loaded Successfully!");
+}
+
+function gotPoses(results){
+  console.log(results);
+
+  if (results.length > 0){
+    rightWristX = results[0].pose.rightWrist.x;
+    rightWristY = results[0].pose.rightWrist.y;
+    score_rightWrist = results[0].pose.keypoints[10].score;
+  }
 }
 
 function draw(){
@@ -47,6 +61,14 @@ function draw(){
   fill("black");
   stroke("black");
   rect(0,0,20,700);
+
+  if (score_rightWrist > 0.2){
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(rightWristX, rightWristY, 20);
+    text("Paddle Position", rightWristX, rightWristY+27.5);
+    
+  }
   
     //funtion paddleInCanvas call 
     paddleInCanvas();
@@ -78,13 +100,22 @@ function draw(){
  }
 
 function start(){
+  console.log("Game Started");
+  document.getElementById("status").innerHTML = "Starting Game...";
+
   document.getElementById("startGame").disabled = true;
   document.getElementById("restartGame").disabled = false;
 }
 
 function reStart(){
+  console.log("Game Re-started");
+  document.getElementById("status").innerHTML = "Re-starting Game...";
+
   document.getElementById("startGame").disabled = true;
   document.getElementById("restartGame").disabled = false;
+  
+  reset();
+  document.getElementById("status").innerHTML = "Game Started";
 }
 
 //function reset when ball does notcame in the contact of padde
@@ -93,7 +124,6 @@ function reset(){
    ball.y = height/2+100;
    ball.dx=3;
    ball.dy =3;
-   
 }
 
 //function midline draw a line in center
